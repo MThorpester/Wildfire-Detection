@@ -60,8 +60,7 @@
       <div class="row">
         <div class="col-md-4 py-3 px-lg-5 border bg-light">
           <!-- <button type="button" class="btn btn-primary btn-lg btn-block" href="wild_fires.html">Monitor Deerhoen Camera</button> -->
-          <a href="/Deerhorn_Camera.html" type="button" class="btn btn-primary btn-lg btn-block">Monitor Deerhorn
-            Camera</a>
+          <a href="/Deerhorn_Camera.html" type="button" class="btn btn-primary btn-lg btn-block">Monitor Deerhorn Camera</a>
 
         </div>
         <div class="col-md-4 py-3 px-lg-5 border bg-light">
@@ -93,24 +92,21 @@
 
           <!-- Full-width images with number and caption text -->
           <div class="mySlides s1">
-            <img src="http://metavision.tech/images/lilac//1512674224_00240.jpg" style="width:100%">
+            <img src="http://metavision.tech/images/lospinos/1569362649_00477.jpg" style="width:100%">
           </div>
 
           <div class="mySlides s2">
-            <img src="http://metavision.tech/images/lilac/1512674284_00300.jpg" style="width:100%">
+            <img src="http://metavision.tech/images/lospinos/1569362709_00537.jpg" style="width:100%">
           </div>
 
           <div class="mySlides s3">
-            <img src="http://metavision.tech/images/lilac/1512674344_00360.jpg" style="width:100%">
+            <img src="http://metavision.tech/images/lospinos/1569362770_00598.jpg" style="width:100%">
           </div>
 
           <div class="mySlides s4">
-            <img src="http://metavision.tech/images/lilac/1512674404_00420.jpg" style="width:100%">
+            <img src="http://metavision.tech/images/lospinos/1569362829_00657.jpg" style="width:100%">
           </div>
 
-          <div class="mySlides s5">
-            <img src="http://metavision.tech/images/lilac/1512674464_00480.jpg" style="width:100%">
-          </div>
           <!-- Next and previous buttons -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -132,7 +128,7 @@
         showSlides(slideIndex += n);
 
         var api = 'http://metavision.tech:5000/api/predict?img_directory=images&img_name=image.jpg&pred_threshold=.50'
-
+        
         var api_data = []
 
         d3.json(api).then((data) => {
