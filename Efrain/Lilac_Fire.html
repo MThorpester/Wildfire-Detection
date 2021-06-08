@@ -9,16 +9,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <!-- Additional custom styling -->
   <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
-  <!-- <link rel="stylesheet" href="/static/drought.css"> -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/drought.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
- 
+
 <body>
   <header>
     <!-- Fixed navbar - removed navbar-dark -->
     <nav class="navbar navbar-expand-md fixed-top bg-dark navbar-custom">
-      <a class="navbar-brand navbar-custom navbar-text active" href="#"><b>California Wildfires </b><span class="sr-only">(current)</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand navbar-custom navbar-text active" href="#"><b>California Wildfires </b><span
+          class="sr-only">(current)</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -45,59 +47,77 @@
   </header>
 
   <div class="container">
-    <div class="row"> <div class="col-sm"></div> </div>
-  </div>  
+    <div class="row">
+      <div class="col-lg"></div>
+      <!-- <h3 class="panel-title">Demographic Info</h3> -->
+    </div>
+  </div>
 
   <div class="container">
     <div class="row"></div>
     <div class="btn-groups">
-        <div class="row">
-          <div class="col-sm py-3 px-lg-5 border bg-light">
-            <!-- <button type="button" class="btn btn-primary btn-lg btn-block" href="wild_fires.html">Monitor Deerhoen Camera</button> -->
-            <a href="/Deerhorn_Camera.html" type="button" class="btn btn-primary btn-lg btn-block">Monitor Deerhorn Camera</a>
-    
+
+      <div class="row">
+        <div class="col-md-4 py-3 px-lg-5 border bg-light">
+          <!-- <button type="button" class="btn btn-primary btn-lg btn-block" href="wild_fires.html">Monitor Deerhoen Camera</button> -->
+          <a href="/Deerhorn_Camera.html" type="button" class="btn btn-primary btn-lg btn-block">Monitor Deerhorn
+            Camera</a>
+
         </div>
-          <div class="col-sm py-3 px-lg-5 border bg-light">
-            <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Evaluate Whitter Fire</button> -->
-            <a href="/Whittier_Fire.html" type="button" class="btn btn-primary btn-lg btn-block">Evaluate Whittier Fire</a>
-    
+        <div class="col-md-4 py-3 px-lg-5 border bg-light">
+          <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Evaluate Whitter Fire</button> -->
+          <a href="/Los_Pinos.html" type="button" class="btn btn-primary btn-lg btn-block">Evaluate Los Pinos Fire</a>
+
         </div>
-          <div class="col-sm py-3 px-lg-5 border bg-light">
-            <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Evaluate Lilac Fire</button> -->
-            <a href="Lilac_Fire.html" type="button" class="btn btn-primary btn-lg btn-block">Evaluate Lilac Fire</a>
-    
+        <div class="col-md-4 py-3 px-lg-5 border bg-light">
+          <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Evaluate Lilac Fire</button> -->
+          <a href="Lilac_Fire.html" type="button" class="btn btn-primary btn-lg btn-block">Evaluate Lilac Fire</a>
         </div>
-        </div>
+      </div>
     </div>
+  </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col">
+        <!-- <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Prediction Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div> -->
       </div>
       <div class="col-10">
-      <!-- Slideshow container -->
+        <!-- Slideshow container -->
         <div class="slideshow-container">
 
           <!-- Full-width images with number and caption text -->
-          <div class="mySlides">
-            <img src="HPWREN-FIgLib/20171207_Lilac_rm-s-mobo/1512674224_+00240.jpg" style="width:100%">
+          <div class="mySlides s1">
+            <img src="http://metavision.tech/images/lilac//1512674224_00240.jpg" style="width:100%">
           </div>
 
-          <div class="mySlides">
-            <img src="HPWREN-FIgLib/20171207_Lilac_rm-s-mobo/1512674464_+00480.jpg" style="width:100%">
+          <div class="mySlides s2">
+            <img src="http://metavision.tech/images/lilac/1512674284_00300.jpg" style="width:100%">
           </div>
 
-          <div class="mySlides">
-            <img src="HPWREN-FIgLib/20171207_Lilac_rm-s-mobo/1512674764_+00780.jpg" style="width:100%">
+          <div class="mySlides s3">
+            <img src="http://metavision.tech/images/lilac/1512674344_00360.jpg" style="width:100%">
           </div>
 
+          <div class="mySlides s4">
+            <img src="http://metavision.tech/images/lilac/1512674404_00420.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides s5">
+            <img src="http://metavision.tech/images/lilac/1512674464_00480.jpg" style="width:100%">
+          </div>
           <!-- Next and previous buttons -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
 
-    </div>
+      </div>
       <div class="col">
       </div>
     </div>
@@ -105,27 +125,42 @@
     <script>
       var slideIndex = 1;
       showSlides(slideIndex);
-      
+
+
+
       function plusSlides(n) {
         showSlides(slideIndex += n);
+
+        var api = 'http://metavision.tech:5000/api/predict?img_directory=images&img_name=image.jpg&pred_threshold=.50'
+
+        var api_data = []
+
+        d3.json(api).then((data) => {
+        api_data = data
+        console.log("api data: ", api_data);
+        })
+
       }
-      
+
       function showSlides(n) {
         var i;
         var slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
         for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
+          slides[i].style.display = "none";
         }
-        slides[slideIndex-1].style.display = "block";  
+        slides[slideIndex - 1].style.display = "block";
       }
-      </script>
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- <script src="/static/js/drought.js"></script> -->
-  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/static/js/image_slides.js"></script>
+    
+
 </body>
 
 </html>

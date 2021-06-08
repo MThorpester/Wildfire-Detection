@@ -1,0 +1,74 @@
+
+/* change the navbar homepage (brand) text color */
+.navbar-custom .navbar-text {
+    color: rgb(238, 76, 12);
+  }
+  
+  /* change the navbar link text color */
+  .navbar-custom .navbar-nav .nav-link {
+    
+    color: #f1b309;
+  }
+  /* change the color of active or hovered links in the navbar */
+  .navbar-custom .nav-item.active .nav-link,
+  .navbar-custom .nav-item:hover .nav-link {
+    color: rgb(250, 56, 8);
+  }
+  
+  body {
+    height: 100%;
+    padding-top: 60px; /* Added padding so navbar doesn't cut off selection tool */
+    margin: 0;
+  }
+  /* ======== bootstrap courosel ================================================================ */
+  
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    }
+  
+  /* ======= Fire Buttons ================================================================================= */
+  
+  .btn-groups a{
+    color: rgb(8, 6, 6);
+    background-color: #f1b309;
+  }
+  /* Add a background color on hover */
+  .btn-groups a:hover {
+    background-color: rgb(250, 56, 8);
+  }
+  
+  * {box-sizing:border-box}
