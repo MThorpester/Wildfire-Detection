@@ -92,18 +92,22 @@ def buildImageArray(img_path):
     for i in Y_points:
         for j in X_points:
             split = img[i:i+split_height, j:j+split_width]
+            timestr = time.strftime("%Y%m%d-%H%M%S")
+            filename = 'split' + str(count) + timestr + '.jpg'
             split_dict = {
-                            'img':split,
+                            'img':"images/processing/" + filename,
                             'x':j,
                             'y':i,
                             'width':split_width,
-                            'height':split_height
+                            'height':split_height,
+                            'cnt': "img" + str(count)
+                
                         };
             split_array.append(split_dict)
-#         cv2.imwrite('{}_{}.{}'.format(name, count, frmt), split)
+            cv2.imwrite("images/processing/" + filename,split)
+#           cv2.imwrite('{}_{}.{}'.format(name, count, frmt), split)
             count += 1
     return split_array;
-
 
 
 def predictArrayImages(pred_array, prediction_threshold,img_path):
@@ -115,7 +119,8 @@ def predictArrayImages(pred_array, prediction_threshold,img_path):
     file = ""
     filepath = ""
     while index < len(pred_array):
-        input_arr = keras.preprocessing.image.img_to_array(pred_array[index]['img'])
+        image = tf.keras.preprocessing.image.load_img(pred_array[index]['img'])
+        input_arr = keras.preprocessing.image.img_to_array(image)
         input_arr = np.array([input_arr])
         x = preprocess_input(input_arr)
         prediction = model.predict(x)
