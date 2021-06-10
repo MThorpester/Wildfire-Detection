@@ -20,7 +20,7 @@ We collected and annotated 500 early ignition images from the HPWREN archive, an
 
 ## The Convolutional Neural Net
 The CNN is built with Keras-Tensorflow and it uses Transfer Learning - leveraging Xception as a trained base for feature extraction. The classification head consists of a Flatten layer, a Dense layer (with 128 neurons) and an output layer that uses the Sigmoid function to output the probability percentage of the image containing an early ignition event.
- The various versions of the convnet were trained on Colab Pro using GPUs and later TPUs, and the latest version is deployed on our Cloud server.
+ The various versions of the convnet were trained on Colab Pro using GPUs and later TPUs, and the latest version is deployed on our Cloud server.<br>
 ![Wildfire Detection Neural Net Architecture](https://github.com/MThorpester/Wildfire-Detection/blob/main/TrainTestCNN/Images/Streamline1-Architecture.jpg)
 
 ## Wildfire Detection API
