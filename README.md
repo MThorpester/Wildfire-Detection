@@ -2,7 +2,7 @@
  The [ALERT Wildfire consortium](http://www.alertwildfire.org/  "ALERT Wildfire website") has a network of over 800 pan-tilt-zoom (PTZ) cameras that are monitored by firefighters and the general public to detect wildfire ignition, verify & locate reported fires, and monitor wildfire behavior.<br> This project explores the possibility of automating the early detection of wildfires using these cameras. To do so, it creates a prototype that uses a convolutional neural network (CNN) to monitor PTZ fire camera images from ALERT Wildfire in real-time and automatically detect the small smoke plumes that typically signal an ignition event. <br><br>
 **Prototype:**
 The prototype uses: 
-- Keras-Tensorflow, Python, Pillow and OpenCV and to create and train the convolutional neural net,
+- Keras-Tensorflow, Python, Pillow and OpenCV to create and train the convolutional neural net,
 - Javascript, Bootstrap, D3.js, HTML and CSS to create a web application that displays camera images and the results of model evaluation
 - Flask, Python, Pillow & OpenCV to create a server-side application that scrapes or reads full-size camera images, splits them up into 299x299 subimages, and passes these subimages to the model for classification. It serves up requests for image classification via a Flask API.
 
