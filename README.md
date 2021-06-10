@@ -1,10 +1,12 @@
 # Wildfire-Detection
-Most of the 650 traditional California fire watchtowers, manned by human wildfire lookouts, have been replaced over the last few decades by a combination of technology and remote monitoring. The [ALERT Wildfire consortium](http://www.alertwildfire.org/  "ALERT Wildfire website") has a network of over 800 pan-tilt-zoom (PTZ) cameras that are monitored by firefighters and the general public to detect wildfire ignition, verify & locate reported fires, and monitor wildfire behavior.<br> This project explores the possibility of automating the early detection of wildfires. To do so, it creates a prototype that uses a convolutional neural network (CNN) to monitor PTZ fire camera images from ALERT Wildfire in real-time and automatically detect the small smoke plumes that typically signal an ignition event. <br>The prototype uses: 
+ The [ALERT Wildfire consortium](http://www.alertwildfire.org/  "ALERT Wildfire website") has a network of over 800 pan-tilt-zoom (PTZ) cameras that are monitored by firefighters and the general public to detect wildfire ignition, verify & locate reported fires, and monitor wildfire behavior.<br> This project explores the possibility of automating the early detection of wildfires using these cameras. To do so, it creates a prototype that uses a convolutional neural network (CNN) to monitor PTZ fire camera images from ALERT Wildfire in real-time and automatically detect the small smoke plumes that typically signal an ignition event. <br><br>
+**Prototype:**
+The prototype uses: 
 - Keras-Tensorflow, Python, Pillow and OpenCV and to create and train the convolutional neural net,
-- Javascript, Bootstrap, HTML and CSS to create a web application that displays camera images and the results of model evaluation
-- Flask, Python, Pillow & OpenCV to create an server-side application that scrapes full-size camera images, splits them up into 299x299 subimages, and passes these subimages to the model for classification. It serves up requests for image classification via a Flask API.
+- Javascript, Bootstrap, D3.js, HTML and CSS to create a web application that displays camera images and the results of model evaluation
+- Flask, Python, Pillow & OpenCV to create a server-side application that scrapes or reads full-size camera images, splits them up into 299x299 subimages, and passes these subimages to the model for classification. It serves up requests for image classification via a Flask API.
 
-<br>  It also evaluates some historical fire sequences for demonstration purposes. The prototype can be accessed [here](http://35.193.188.227/ "California Wildfire Dashboard"). UPDATE LINK!   
+<br>  It also evaluates some historical fire sequences for demonstration purposes. The prototype can be accessed on the Wildfire Detection tab [here](http://35.193.188.227/ "California Wildfire Dashboard").
  
 
 **Findings**: Based on initial results with this prototype, we conclude that it is definitely a direction worth further exploration!  The current version of the neural net classifies subimages with a 94.66% true accuracy rate. It produces false negatives (incorrectly classifying early signs of wildfire) only 0.37% of the time, while it produces false postives (incorrectly classifying images that contain no clear sign of an ignition event) 4.97% of the time. We have created a new dataset of 35,000 images to improve the false positive rate, and plan to re-trainthe neural net with this dataset and re-evaluate our results in the future. 
@@ -19,11 +21,11 @@ We collected and annotated 500 early ignition images from the HPWREN archive, an
 
 ## The Convolutional Neural Net
 The CNN is built with Keras-Tensorflow and it uses Transfer Learning - leveraging Xception as a trained base for feature extraction. The classification head consists of a Flatten layer, a Dense layer (with 128 neurons) and an output layer that uses the Sigmoid function to output the probability percentage of the image containing an early ignition event.
-![Wildfire Detection Neural Net Architecture](https://github.com/MThorpester/Wildfire-Detection/blob/main/Margaret/Streamline1-Architecture.jpg) 
-
+ The various versions of the convnet were trained on Colab Pro using GPUs and later TPUs, and the latest version is deployed on our Cloud server.
+![Wildfire Detection Neural Net Architecture](https://github.com/MThorpester/Wildfire-Detection/blob/main/TrainTestCNN/Images/Streamline1-Architecture.jpg)
 
 ## Wildfire Detection API
-The wildfire detection API is running on a Debian Linux server in the Google Cloud.  The domain http://metavision.tech points to our cloud server, which our HTML is being serviced by Apache and API by Python Flask.  The following are the endpoints at http://metavision.tech:5000/api/: UPDATE THIS!
+The wildfire detection API is running on a Debian Linux server in the Google Cloud.  The domain http://metavision.tech points to our cloud server, which our HTML is being serviced by Apache and API by Python Flask.  The following are the endpoints at http://metavision.tech:5000/api/:
 - **/** 
     - API documentation
  - **/predict**
@@ -60,12 +62,12 @@ The wildfire detection API is running on a Debian Linux server in the Google Clo
     }
    }
    ```
--
 ## Project Artifacts
 Key project files are organized as follows:
 - All artifacts related to training and testing the neural net are in the Wildfire-Detection/TrainTestCNN directory:
     - Jupyter notebooks used to train and test all versions of the neural net
-    - Jupyter notebooks for extracting images, splitting images, sampling images and composing new image datasets
+        - The notebooks used to train and test the currently deployed production model are: Train_Save_Streamline1.ipynb, Test_Saved_Streamline1.ipynb
+    - Jupyter notebooks for generating the confusion matrix, extracting images, splitting images, sampling images and composing new image datasets
     - The actual saved models are too big to store in this repository. The saved version of the currently deployed model is here: https://drive.google.com/drive/folders/1e5x_d8IY2h36o5rIdzuhVkWM9cJ_1nJB?usp=sharing
     - The actual image datasets for training the CNN are too large to store in this repository (the latest contains 35,000 images). The latest dataset is here: https://drive.google.com/drive/folders/1mjEPKK596iGEUERgapdXmxCh-M3pK8UV?usp=sharingdataset 
 
@@ -79,4 +81,4 @@ Key project files are organized as follows:
 
 ## Getting Started**
 
-To run this application visit the hosted version [here](http://metavision.tech/ "California Wildfire Dashboard").UPDATE THIS!
+To run this application visit the hosted version on the Wildfire Detection tab [here](http://metavision.tech/ "California Wildfire Dashboard").
