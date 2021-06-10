@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wildfire Trend Analysis</title>
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Additional custom styling -->
+  <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
+  <!-- <link rel="stylesheet" href="/static/drought.css"> -->
+  <!-- ========================================== -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- ========================================== -->
+  <link rel="stylesheet" href="../static/css/drought.css">
+  <style> p {text-align: center;} </style>
+
+</head>
+ 
+<body>
+  <header>
+    <!-- Fixed navbar - removed navbar-dark -->
+    <nav class="navbar navbar-expand-md fixed-top bg-dark navbar-custom">
+      <a class="navbar-brand navbar-custom navbar-text active" href="../index.html"><b>California Wildfires </b><span class="sr-only">(current)</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="wfmap.html">Wildfire Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wfanalysis.html">Wildfire Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="drought.html">Drought Profile</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
+            id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+             Wildfire Detection 
+            </a>
+           
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="Deerhorn_Camera.html">Monitor Deerhorn Camera</a></li>
+                  <li><a class="dropdown-item" href="Los_Pinos.html">Evaluate Los Pinos Fire</a></li>
+                  <li><a class="dropdown-item" href="Lilac_Fire.html">Evaluate Lilac Fire</a></li>
+              </ul>
+          
+  
+          </li>
+
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row"> <div class="col-sm"></div> </div>
+  </div>  
+
+  <div class="container">
+    <div class="row"></div>
+    <div class="btn-groups">
+
+      <div class="col-12 py-3 px-lg-5 border bg-light">
+        <a onclick="predict(slideIndex)" class="btn btn-primary btn-lg btn-block" type="button">Monitor Deerhorn Camera</a>
+          </div>
+
+          <div class="alert" role="alert">
+
+          </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-10">
+      <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+          <!-- Full-width images with number and caption text -->
+          <div class="mySlides">
+            <img src="http://metavision.tech/images/scrape/scrape.jpg" style="width:100%">
+          </div>
+
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+    </div>
+      <div class="col">
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slides[slideIndex-1].style.display = "block";  
+      }
+      </script>
+
+
+<script>
+      
+  function predict(slideIndex) {
+    if (slideIndex == 1) {
+      ImageDir = "images/scrape"
+      ImageName = "scrape.jpg"
+    }
+    
+    var api = 'http://metavision.tech:5000/api/predict?img_directory=' + ImageDir + '&img_name=' + ImageName + '&pred_threshold=.50'
+    var api_data = []
+    d3.json(api).then((data) => {
+    api_data = data
+    url = data[0].img_url
+    var smoke_ind = data[0].smoke_detected
+    console.log("api data: ", api_data);
+    console.log("url: ", url);
+    smoke_detection(smoke_ind)
+    if (url != "") {
+      window.open(url, '_blank');
+    }
+    })
+
+  Detection_Waiting()
+    
+  }
+
+  function Detection_Waiting(){
+  
+    d3.select(".alert")
+      .append("div")
+      .append("p")
+      .append("h1")
+      .text("Detection in progress...") 
+  }
+  
+function smoke_detection(smoke_ind){
+
+  d3.select("div.alert").html("");
+
+
+  var smoke = "Detection in progress..."
+  console.log("smoke: ", smoke);
+  if (smoke_ind == "Y") {
+
+    d3.select(".alert")
+      .append("div")
+      .append("p")
+      .append("h1")
+      .text("Alert!!! Smoke has been detected")
+
+       smokedetected = "Alert!!! Smoke has been detected" 
+      }
+    else if (smoke_ind == "N") {
+
+    d3.select(".alert")
+    .append("div")
+    .append("p")
+    .append("h1")
+    .text("No smoke has been detected")
+
+      smokedetected = "No smoke has been detected"
+    }
+    console.log("smokedetected: ", smokedetected);
+}
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script src="/static/js/drought.js"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

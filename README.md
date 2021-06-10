@@ -23,15 +23,43 @@ The CNN is built with Keras-Tensorflow and it uses Transfer Learning - leveragin
 
 
 ## Wildfire Detection API
-Several different requests are exposed by a Flask as API endpoints at http://metavision.tech/images/: UPDATE THIS!
-- / 
+The wildfire detection API is running on a Debian Linux server in the Google Cloud.  The domain http://metavision.tech points to our cloud server, which our HTML is being serviced by Apache and API by Python Flask.  The following are the endpoints at http://metavision.tech:5000/api/: UPDATE THIS!
+- **/** 
     - API documentation
-- /images
-    - Returns the ?????
- - /evaluate
-    - Returns the ??????
-- /etc.
-    - ???????? 
+ - **/predict**
+    - Endpoint initiates the necessary processes to feed image into our prediction model.  Process includes the splitting of images innto 299X299 pixel segments and feeding each segmented image to model for prediction.  Based on the precition threshold passed into URL a smoke indicator value is set,  the images is annotated with bounding boxes and probability returned from model. The location of the generated/annotated image and bounding boxes are also sent with JSON.  The following is a sample JSON set genearated by endpoint.
+
+```[
+    {
+        img_url: "http://metavision.tech/images/bound_images/image.jpg",
+        smoke_detected: "Y",
+        bounds: [
+                    {
+                    x: 888,
+                    y: 592,
+                    width: 299,
+                    height: 299,
+                    prediction: "0.8909"
+                    },
+                    {
+                    x: 1184,
+                    y: 592,
+                    width: 299,
+                    height: 299,
+                    prediction: "0.5892"
+                    }
+        ]
+    }
+]
+```
+- **/scrape**
+    - Calling the endpoint triggers a scrape of Deerhorn camera and dropping the scraped image onto server. A JSON with the location of scraped  image is returned.  Selenium is used to scrape image, but the endpoint does not work in our cloud environment.  We were not able to open a browser on a non graphical system. We tried creating a virtual display, but still could not startup the browser.  The following is the JSON returned by endpoint:
+```[
+    {
+        img_url: "http://metavision.tech/images/bound_images/image.jpg"
+    }
+   }
+   ```
 -
 ## Project Artifacts
 Key project files are organized as follows:
@@ -42,9 +70,12 @@ Key project files are organized as follows:
     - The actual image datasets for training the CNN are too large to store in this repository (the latest contains 35,000 images). The latest dataset is here: https://drive.google.com/drive/folders/1mjEPKK596iGEUERgapdXmxCh-M3pK8UV?usp=sharingdataset 
 
 - Web app
+    Our website html, CSS and javascript code is located in the **webassets** folder of our GitHub repository.
 - API
+    Flask code is located in the **flask** folder of our GitHub repository.
+- Image Augmentation python code is in the **image_processing** folder of our GitHub repository.
 
 
-## Getting Started
+## Getting Started**
 
-To run this application visit the hosted version [here](http://35.193.188.227/ "California Wildfire Dashboard").UPDATE THIS!
+To run this application visit the hosted version [here](http://metavision.tech/ "California Wildfire Dashboard").UPDATE THIS!
