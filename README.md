@@ -5,6 +5,7 @@ The prototype uses:
 - Keras-Tensorflow, Python, Pillow and OpenCV to create and train the convolutional neural net,
 - Javascript, Bootstrap, D3.js, HTML and CSS to create a web application that displays camera images and the results of model evaluation
 - Flask, Python, Pillow & OpenCV to create a server-side application that scrapes or reads full-size camera images, splits them up into 299x299 subimages, and passes these subimages to the model for classification. It serves up requests for image classification via a Flask API.
+
 <br>  It also evaluates some historical fire sequences for demonstration purposes. The prototype can be accessed on the Wildfire Detection tab [here](http://metavision.tech/ "California Wildfire Dashboard").
 
 **Findings**: Based on initial results with this prototype, we conclude that it is definitely a direction worth further exploration!  The current version of the neural net classifies subimages with a 94.66% true accuracy rate. It produces false negatives (incorrectly classifying early signs of wildfire) only 0.37% of the time, while it produces false postives (incorrectly classifying images that contain no clear sign of an ignition event) 4.97% of the time. The false positives usually include clouds, smoke or haze. We have created a new dataset of 35,000 images to improve the false positive rate, and plan to re-train the neural net with this dataset and re-evaluate our results in the near future. 
