@@ -70,10 +70,11 @@ Key project files are organized as follows:
     - The actual image datasets for training the CNN are too large to store in this repository (the latest contains 35,000 images). The latest dataset is here: https://drive.google.com/drive/folders/1mjEPKK596iGEUERgapdXmxCh-M3pK8UV?usp=sharingdataset 
 
 - Web app
-    Our website html, CSS and javascript code is located in the **webassets** folder of our GitHub repository.
+    - Our website html, CSS and javascript code is located in the **webassets** folder of our GitHub repository.
 - API
-    Flask code is located in the **flask** folder of our GitHub repository.
-- Image Augmentation python code is in the **image_processing** folder of our GitHub repository.
+    - Flask code is located in the **flask** folder of our GitHub repository.
+- Image Augmentation 
+    - Python code is in the **image_processing** folder of our GitHub repository.
 
 
 ## Getting Started**
