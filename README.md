@@ -2,12 +2,11 @@
  The [ALERT Wildfire consortium](http://www.alertwildfire.org/  "ALERT Wildfire website") has a network of over 800 pan-tilt-zoom (PTZ) cameras that are monitored by firefighters and the general public to detect wildfire ignition, verify & locate reported fires, and monitor wildfire behavior.<br> This project explores the possibility of automating the early detection of wildfires using these cameras. To do so, it creates a prototype that uses a convolutional neural network (CNN) to monitor PTZ fire camera images from ALERT Wildfire in real-time and automatically detect the small smoke plumes that typically signal an ignition event. <br><br>
 **Prototype:**
 The prototype uses: 
-- Keras-Tensorflow, Python, Pillow and OpenCV and to create and train the convolutional neural net,
+- Keras-Tensorflow, Python, Pillow and OpenCV to create and train the convolutional neural net,
 - Javascript, Bootstrap, D3.js, HTML and CSS to create a web application that displays camera images and the results of model evaluation
-- Flask, Python, Pillow & OpenCV to create a server-side application that scrapes or reads full-size camera images, splits them up into 299x299 subimages, and passes these subimages to the model for classification. It serves up requests for image classification via a Flask API.
+- Flask, Python, Pillow & OpenCV to create a server-side application that scrapes or reads full-size camera images, splits them up into 299x299 subimages, and passes these subimages to the model for classification. It serves up requests for image classification via a Flask API.<br>
 
-<br>  It also evaluates some historical fire sequences for demonstration purposes. The prototype can be accessed on the Wildfire Detection tab [here](http://metavision.tech/ "California Wildfire Dashboard").
- 
+It also evaluates some historical fire sequences for demonstration purposes. The prototype can be accessed on the Wildfire Detection tab [here](http://metavision.tech/ "California Wildfire Dashboard").
 
 **Findings**: Based on initial results with this prototype, we conclude that it is definitely a direction worth further exploration!  The current version of the neural net classifies subimages with a 94.66% true accuracy rate. It produces false negatives (incorrectly classifying early signs of wildfire) only 0.37% of the time, while it produces false postives (incorrectly classifying images that contain no clear sign of an ignition event) 4.97% of the time. The false positives usually include clouds, smoke or haze. We have created a new dataset of 35,000 images to improve the false positive rate, and plan to re-train the neural net with this dataset and re-evaluate our results in the near future. 
 
@@ -21,7 +20,7 @@ We collected and annotated 500 early ignition images from the HPWREN archive, an
 
 ## The Convolutional Neural Net
 The CNN is built with Keras-Tensorflow and it uses Transfer Learning - leveraging Xception as a trained base for feature extraction. The classification head consists of a Flatten layer, a Dense layer (with 128 neurons) and an output layer that uses the Sigmoid function to output the probability percentage of the image containing an early ignition event.
- The various versions of the convnet were trained on Colab Pro using GPUs and later TPUs, and the latest version is deployed on our Cloud server.
+ The various versions of the convnet were trained on Colab Pro using GPUs and later TPUs, and the latest version is deployed on our Cloud server.<br>
 ![Wildfire Detection Neural Net Architecture](https://github.com/MThorpester/Wildfire-Detection/blob/main/TrainTestCNN/Images/Streamline1-Architecture.jpg)
 
 ## Wildfire Detection API
