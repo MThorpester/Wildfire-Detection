@@ -68,7 +68,9 @@ Key project files are organized as follows:
         - The notebooks used to train and test the currently deployed production model are: Train_Save_Streamline1.ipynb, Test_Saved_Streamline1.ipynb
     - Jupyter notebooks for generating the confusion matrix, extracting images, splitting images, sampling images and composing new image datasets
     - The actual saved models are too big to store in this repository. The saved version of the currently deployed model is here: https://drive.google.com/drive/folders/1e5x_d8IY2h36o5rIdzuhVkWM9cJ_1nJB?usp=sharing
-    - The actual image datasets for training the CNN are too large to store in this repository (the latest contains 35,000 images). The latest dataset is here: https://drive.google.com/drive/folders/1mjEPKK596iGEUERgapdXmxCh-M3pK8UV?usp=sharingdataset 
+    - The actual image datasets for training the CNN are too large to store in this repository (the latest contains 35,000 images). The latest dataset is here: https://drive.google.com/drive/folders/1mjEPKK596iGEUERgapdXmxCh-M3pK8UV?usp=sharingdataset
+        - Note: This dataset is too large for Colab Pro to load from Google Drive, so I transferred to a Google Cloud Services bucket: gs://streamline2/TrainStreamline2.
+        - Unfortunately it turns out that Keras image_dataset_from_directory won't accept a GCS bucket. So the CNN code will need to be rewritten using ImageDataGenerator when time affords, and/or will need to migrate to Google AI platform.
 
 - Web app
     - Our website html, CSS and javascript code is located in the **webassets** folder of our GitHub repository.
